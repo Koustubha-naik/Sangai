@@ -1,0 +1,89 @@
+/* --------------------------------------------------
+   GLOBAL THEME VARIABLES
+   (Light + Dark mode compatible)
+--------------------------------------------------- */
+
+/* -----------------------------------
+   FONT SYSTEM
+------------------------------------ */
+$font-main: "HoeflerText", serif;
+$font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+
+/* -----------------------------------
+   LIGHT MODE COLORS
+------------------------------------ */
+[data-theme="light"] {
+    /* MAIN UI */
+    --bg: #f4f4f6;                  /* soft frosted silver */
+    --text: #222;                   /* deep neutral black */
+    --header-bg: #ffffffd0;         /* slightly transparent */
+    --footer-bg: #ffffffee;
+
+    /* LINKS */
+    --link: #1e40af;
+    --link-hover: #1d4ed8;
+
+    /* ACCENTS */
+    --accent: #3b82f6;              /* blue-500 */
+
+    /* MENU OVERLAY */
+    --menu-overlay: rgba(255, 255, 255, 0.65);
+}
+
+/* -----------------------------------
+   DARK MODE COLORS
+------------------------------------ */
+[data-theme="dark"] {
+    /* MAIN UI */
+    --bg: #05080d;                  /* deep navy black */
+    --text: #e6e6e6;                /* soft white */
+    --header-bg: #0a0f18cc;
+    --footer-bg: #0b111acc;
+
+    /* LINKS */
+    --link: #7eb6ff;
+    --link-hover: #a6ccff;
+
+    /* ACCENTS */
+    --accent: #2f82ff;              /* stronger neon-blue */
+
+    /* MENU OVERLAY */
+    --menu-overlay: rgba(0, 12, 35, 0.55);
+}
+
+
+/* -----------------------------------
+   SPACING SCALE
+------------------------------------ */
+$space-1: 4px;
+$space-2: 8px;
+$space-3: 12px;
+$space-4: 16px;
+$space-5: 24px;
+$space-6: 32px;
+$space-7: 48px;
+
+
+/* -----------------------------------
+   BORDER RADII
+------------------------------------ */
+$radius-s: 6px;
+$radius-m: 12px;
+$radius-l: 24px;
+
+
+/* -----------------------------------
+   SHADOWS
+------------------------------------ */
+$shadow-soft: 0 4px 20px rgba(0,0,0,0.12);
+$shadow-medium: 0 6px 28px rgba(0,0,0,0.18);
+$shadow-strong: 0 10px 40px rgba(0,0,0,0.25);
+
+
+/* -----------------------------------
+   TRANSITIONS
+------------------------------------ */
+$transition-fast: 0.15s ease;
+$transition-medium: 0.25s ease;
+$transition-slow: 0.35s ease;

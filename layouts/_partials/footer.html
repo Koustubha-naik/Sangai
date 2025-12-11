@@ -1,0 +1,32 @@
+<footer class="site-footer">
+    <div class="footer-inner">
+
+        <div class="footer-left">
+            © {{ now.Year }} {{ .Site.Title }} — All Rights Reserved.
+        </div>
+
+        <nav class="footer-links" aria-label="Footer menu">
+            {{ range first 4 .Site.Menus.main }}
+                <a href="{{ .URL | relURL }}">{{ .Name }}</a>
+            {{ end }}
+        </nav>
+
+        <div class="footer-social" aria-label="Footer icons">
+
+            {{ with .OutputFormats.Get "RSS" }}
+            <a href="{{ .RelPermalink }}" class="footer-icon rss" aria-label="RSS feed">
+                {{ partial "svg.html" (dict "name" "rss") }}
+            </a>
+            {{ end }}
+
+            <a href="https://gohugo.io/"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="footer-icon hugo"
+               aria-label="Hugo website">
+                <img src="/svg/hugo.svg" alt="Hugo">
+            </a>
+
+        </div>
+    </div>
+</footer>

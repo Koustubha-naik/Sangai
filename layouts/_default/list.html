@@ -1,0 +1,106 @@
+{{ define "main" }}
+
+<h1 class="page-title">{{ .Title }}</h1>
+
+{{ $paginator := .Paginate (.Pages.ByDate.Reverse) }}
+
+<div class="list-container">
+
+    {{ range $paginator.Pages }}
+    <a href="{{ .RelPermalink }}" class="list-row">
+
+        {{ with .Params.image }}
+        <div class="list-thumb">
+            <img src="{{ . | relURL }}" alt="{{ $.Title }}">
+        </div>
+        {{ end }}
+
+        <div class="list-content">
+            <h2 class="list-title">{{ .Title }}</h2>
+
+            {{ with .Params.description }}
+            <p class="list-desc">{{ . }}</p>
+            {{ end }}
+
+            <div class="list-meta">
+                {{ $now := now.Unix }}
+                {{ $then := .Date.Unix }}
+                {{ $days := div (sub $now $then) 86400 }}
+                {{ $months := div $days 30 }}
+                {{ $years := div $days 365 }}
+
+                {{ if lt $days 1 }}
+                    Today
+                {{ else if lt $days 30 }}
+                    {{ if eq $days 1 }}1 day ago{{ else }}{{ $days }} days ago{{ end }}
+                {{ else if lt $months 12 }}
+                    {{ if eq $months 1 }}1 month ago{{ else }}{{ $months }} months ago{{ end }}
+                {{ else }}
+                    {{ if eq $years 1 }}1 year ago{{ else }}{{ $years }} years ago{{ end }}
+                {{ end }}
+            </div>
+        </div>
+
+    </a>
+    {{ end }}
+
+</div>
+
+<!-- PAGINATION -->
+<div class="pagination">
+
+    {{ $p := .Paginator }}
+    {{ $current := $p.PageNumber }}
+    {{ $total := $p.TotalPages }}
+
+    <!-- FIRST -->
+    {{ if ne $current 1 }}
+        <a class="page-edge" href="{{ $p.First.URL }}">« First</a>
+    {{ else }}
+        <span class="page-edge disabled">« First</span>
+    {{ end }}
+
+    <!-- WINDOW CALCULATION -->
+    {{ $.Scratch.Set "start" (sub $current 1) }}
+    {{ if lt ($.Scratch.Get "start") 1 }}
+        {{ $.Scratch.Set "start" 1 }}
+    {{ end }}
+
+    {{ $.Scratch.Set "end" (add ($.Scratch.Get "start") 2) }}
+    {{ if gt ($.Scratch.Get "end") $total }}
+        {{ $.Scratch.Set "end" $total }}
+    {{ end }}
+
+    {{ $start := $.Scratch.Get "start" }}
+    {{ $end := $.Scratch.Get "end" }}
+
+    <div class="page-numbers">
+        {{ range seq $start $end }}
+            {{ $i := . }}
+
+            {{ $url := "" }}
+            {{ range $p.Pagers }}
+                {{ if eq .PageNumber $i }}
+                    {{ $url = .URL }}
+                {{ end }}
+            {{ end }}
+
+            {{ if eq $i $current }}
+                <span class="page-number active" aria-current="page">{{ $i }}</span>
+            {{ else }}
+                <a href="{{ $url }}" class="page-number">{{ $i }}</a>
+            {{ end }}
+
+        {{ end }}
+    </div>
+
+    <!-- LAST -->
+    {{ if ne $current $total }}
+        <a class="page-edge" href="{{ $p.Last.URL }}">Last »</a>
+    {{ else }}
+        <span class="page-edge disabled">Last »</span>
+    {{ end }}
+
+</div>
+
+{{ end }}

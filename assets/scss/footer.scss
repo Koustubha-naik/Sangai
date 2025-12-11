@@ -1,0 +1,125 @@
+/* =========================
+   FOOTER
+========================= */
+.site-footer {
+    width: 100%;
+    padding: 22px 20px;
+
+    background-color: rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.10);
+    border-top: 1px solid rgba(255,255,255,0.22);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    color: var(--text);
+    position: relative;
+    z-index: 10;
+    margin-top: auto;
+}
+
+/* Dark theme */
+:root[data-theme="dark"] .site-footer {
+    background-color: rgba(0,0,0,0.20);
+    background: rgba(0,0,0,0.25);
+    border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+/* Layout */
+.footer-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Copyright */
+.footer-left {
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+/* Links */
+.footer-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: var(--text);
+    font-size: 0.95rem;
+    padding: 3px 4px;
+    white-space: nowrap;
+    transition: opacity 0.2s ease;
+}
+
+.footer-links a:hover {
+    opacity: 1;
+}
+
+.footer-links a:not(:last-child)::after {
+    content: "·";
+    margin-left: 6px;
+    opacity: 0.6;
+}
+
+/* Icons */
+.footer-social {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.footer-icon svg {
+    width: 22px;
+    height: 22px;
+    opacity: 0.85;
+    transition: 0.22s ease;
+}
+
+/* Hugo logo */
+.footer-icon.hugo img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    opacity: 0.85;
+}
+
+.footer-icon.rss:hover svg {
+    transform: scale(1.18);
+    opacity: 1;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+    .footer-inner {
+        flex-direction: column;
+        text-align: center;
+        gap: 18px;
+    }
+
+    .footer-links {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .footer-links a {
+        padding: 4px 6px;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+
+    .footer-icon.hugo img {
+        width: 60px;
+        height: 60px;
+    }
+}

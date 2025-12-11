@@ -1,0 +1,81 @@
+{{ define "main" }}
+
+<div class="single-page-padding"> 
+
+<!-- =======================================
+     FEATURED HERO WITH BLUR
+======================================= -->
+{{ with .Params.image }}
+<div class="hero-box">
+    <div class="hero-blur" style="background-image: url('{{ . | relURL }}');"></div>
+    <img class="hero-main" src="{{ . | relURL }}" alt="{{ $.Title }}">
+</div>
+{{ end }}
+
+<!-- =======================================
+     TOC (Notion-style collapsible)
+======================================= -->
+{{ if and (.Params.toc) (.TableOfContents) }}
+<aside class="toc-sidebar closed">
+    <div class="toc-title">
+        Contents <span class="toc-arrow">▼</span>
+    </div>
+    <div class="toc-content">
+        {{ .TableOfContents }}
+    </div>
+</aside>
+{{ end }}
+
+
+<!-- =======================================
+     ARTICLE WRAPPER
+======================================= -->
+<article class="single-container">
+
+    <header class="single-header">
+
+        {{ with $.Section }}
+        <div class="single-category">
+            {{ humanize . }}
+        </div>
+        {{ end }}
+
+        <h1 class="single-title">{{ .Title }}</h1>
+
+        <div class="single-meta">
+            {{ .Date.Format "2006/01/02" }}
+            • {{ .WordCount }} words
+            • {{ .ReadingTime }} mins
+        </div>
+
+        <hr class="single-divider">
+    </header>
+
+
+    <!-- CODE BLOCK COPY ENHANCER -->
+    {{ $copyIcon := partial "svg.html" (dict "name" "copy") }}
+
+    {{ $content := .Content }}
+
+    {{ $content = $content
+        | replaceRE `<pre.*?><code(.*?)>`
+          (printf `<div class="code-block-wrapper">
+              <button class="copy-code-btn">
+                  <span class="copy-text">Copy</span>
+                  %s
+              </button>
+              <pre><code$1>` $copyIcon)
+        | replaceRE `</code></pre>`
+          `</code></pre></div>`
+    }}
+
+    <div class="single-content">
+        {{ $content | safeHTML }}
+    </div>
+
+</article>
+
+
+</div>
+
+{{ end }}

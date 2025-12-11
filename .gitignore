@@ -1,0 +1,20 @@
+# Hugo generated files
+public/
+resources/
+.hugo_build.lock
+
+# exampleSite generated folders
+exampleSite/public/
+exampleSite/resources/
+exampleSite/.hugo_build.lock
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Editor folders
+.vscode/
+.idea/
+
+# Temporary
+*.log

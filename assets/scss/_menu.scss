@@ -1,0 +1,161 @@
+/* -----------------------------------
+   FULLSCREEN OVERLAY MENU (SLIDE-IN)
+------------------------------------- */
+
+.overlay-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+
+    /* Adaptive Light/Dark Overlay */
+    background: var(--menu-overlay);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-100%);   /* Slide from left */
+    transition: transform 0.40s ease, opacity 0.40s ease;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding-top: 90px;
+    z-index: 1200;
+}
+
+.overlay-menu.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+}
+
+/* -----------------------------------
+   CLOSE BUTTON + TEXT
+------------------------------------- */
+
+.close-container {
+    position: absolute;
+    top: 25px;
+    left: 30px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    font-family: "HoeflerText", serif;
+}
+
+.close-button {
+    font-size: 3.4rem;
+    color: var(--text);
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.close-button:hover {
+    transform: scale(1.15);
+    color: var(--accent);
+}
+
+.close-text {
+    font-size: 1.6rem;
+    color: var(--text);
+    transition: 0.2s ease;
+}
+
+.close-text:hover {
+    color: var(--accent);
+}
+
+/* -----------------------------------
+   SCROLL AREA (IMPROVED)
+------------------------------------- */
+
+.menu-scroll-container {
+    max-height: 75vh;
+    width: 100%;
+    overflow-y: auto;
+
+    /* Wider scroll hitbox for PC */
+    padding: 0 40px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    scrollbar-width: none;        /* Firefox hide scrollbar */
+}
+
+.menu-scroll-container::-webkit-scrollbar {
+    display: none;                /* Chrome hide scrollbar */
+}
+
+/* -----------------------------------
+   MENU LINKS (FULL WIDTH CLICKABLE)
+------------------------------------- */
+
+.overlay-link {
+    display: block;
+    width: 100%;
+    max-width: 420px;             /* Center control */
+
+    text-align: center;
+    font-family: "HoeflerText", serif;
+    font-size: 2rem;
+    letter-spacing: 0.4px;
+
+    color: var(--text);
+    padding: 14px 0;
+    margin: 12px auto;
+
+    transition: 0.25s ease;
+}
+
+/* Hover effect */
+.overlay-link:hover {
+    transform: translateX(4px);
+    opacity: 0.75;
+    color: var(--accent);
+}
+
+/* -----------------------------------
+   PC Enhancements
+------------------------------------- */
+
+@media (min-width: 900px) {
+    .menu-scroll-container {
+        max-height: 80vh;
+        padding: 0 80px;  /* wider scroll area for comfort */
+    }
+
+    .overlay-link {
+        font-size: 2.2rem;
+    }
+}
+
+/* -----------------------------------
+   MOBILE TWEAKS
+------------------------------------- */
+
+@media (max-width: 600px) {
+    .overlay-link {
+        font-size: 1.7rem;
+    }
+
+    .close-button {
+        font-size: 2.7rem;
+    }
+
+    .close-text {
+        font-size: 1.3rem;
+    }
+}
+
+.overlay-menu {
+    z-index: 5000 !important;
+}

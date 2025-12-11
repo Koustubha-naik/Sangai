@@ -1,0 +1,147 @@
+# =========================
+# BASIC SITE SETTINGS
+# =========================
+baseURL = "https://koustubha-naik.github.io/Sangai/"
+languageCode = "en-us"
+title = "Sangai"
+theme = "Sangai"
+
+# =========================
+# PAGINATION
+# =========================
+[pagination]
+  pagerSize = 2
+
+# =========================
+# SITE PARAMETERS
+# =========================
+[params]
+  googleAnalytics = "G-XXXXXXXXXX"
+
+  # Profile details
+  [params.profile]
+    name = "Sangai DEER ❤️‍🔥"
+    about = """Namaskar and welcome! I am the Sangai, the rare Dancing Deer of Manipur’s floating Keibul Lamjao 
+    National Park. This is my little home on the web, where I share my world, my story, and the beauty of Loktak Lake. 
+    Thank you for visiting—may my dance inspire you."""
+    avatar = "/img/profile.webp"
+
+  # Explore section heading
+  [params.explore_title]
+    title = "Explore"
+    subtitle = "Dive into what I'm building, breaking, and learning."
+
+# Explore cards
+[[params.explore]]
+  title = "Loktak Lake"
+  icon = "🌊"
+  category = "Nature"
+  description = "Explore the beauty of the world’s only floating national park."
+  url = "/loktak/"
+
+[[params.explore]]
+  title = "Conservation Story"
+  icon = "🌱"
+  category = "Environment"
+  description = "Discover how the Sangai is protected and why it matters."
+  url = "/conservation/"
+
+[[params.explore]]
+  title = "About the Sangai"
+  icon = "🦌"
+  category = "Wildlife"
+  description = "Learn about the rare Dancing Deer of Manipur and her floating home."
+  url = "/about/"
+
+# Featured slider items
+[[params.featured]]
+  title = "Morning Mist of Loktak"
+  description = "A serene sunrise drifting across the floating islands of Loktak Lake."
+  image = "/img/morning.webp"
+  url = "/loktak/morning-mist/"
+
+[[params.featured]]
+  title = "The Floating Phumdis"
+  description = "Explore the unique floating islands that support the Sangai and the entire ecosystem."
+  image = "img/local.webp"
+  url = "/loktak/phumdis/"
+
+[[params.featured]]
+  title = "About the Sangai"
+  description = "Meet the rare Dancing Deer of Manipur and explore her floating world."
+  image = "/img/sketch.webp"
+  url = "/about/"
+
+# Social links
+[[params.social]]
+  icon = "github"
+  url = "#"
+
+[[params.social]]
+  icon = "linkedin"
+  url = "#"
+
+[[params.social]]
+  icon = "x"
+  url = "#"
+
+[[params.social]]
+  icon = "instagram"
+  url = "#"
+
+[[params.social]]
+  icon = "linkedin"
+  url = "#"
+
+
+# =========================
+# MARKDOWN SETTINGS
+# =========================
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
+
+  [markup.highlight]
+    lineNos = true
+    lineNumbersInTable = false
+
+
+# =========================
+# NAVIGATION MENU
+# =========================
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+
+  [[menu.main]]
+    name = "Blog"
+    url = "/loktak/"
+    weight = 2
+
+  [[menu.main]]
+    name = "Conservation"
+    url = "/conservation/"
+    weight = 3
+
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 4
+
+
+# =========================
+# OUTPUT FORMATS
+# =========================
+[outputs]
+  home = ["HTML", "RSS"]
+
+
+# =========================
+# SITEMAP (SEO)
+# =========================
+[sitemap]
+  changefreq = "monthly"
+  priority = 0.5
+  filename = "sitemap.xml"

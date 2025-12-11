@@ -1,0 +1,42 @@
+name = "Sangai"
+license = "MIT"
+licenselink = "https://opensource.org/licenses/MIT"
+description = "A clean, modern, and responsive Hugo theme inspired by the Sangai deer — built for blogs, portfolios, and storytelling."
+
+homepage = "https://github.com/Koustubha-naik/Sangai"
+# demosite = ""  # Add later when you host a demo
+
+tags = [
+  "blog",
+  "portfolio",
+  "minimal",
+  "clean",
+  "modern",
+  "responsive",
+  "dark-mode",
+  "lightweight",
+  "personal",
+  "documentation",
+  "hugo-theme",
+  "scss"
+]
+
+features = [
+  "Dark / Light mode toggle",
+  "Featured content slider",
+  "Explore card section",
+  "Responsive design",
+  "Clean typography",
+  "Fast build with Hugo Pipes",
+  "SCSS-based styling",
+  "Code highlighting",
+  "Customizable layouts",
+  "Table of contents",
+  "Social icons support"
+]
+
+min_version = "0.149.0"
+
+[author]
+  name = "Koustubha Naik"
+  homepage = "https://github.com/Koustubha-naik/Sangai"
