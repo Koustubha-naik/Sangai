@@ -261,3 +261,83 @@ a {
     100% { clip-path: inset(30% 0 10% 0); }
 }
 
+/* =====================================
+   MOBILE
+===================================== */
+
+@media (max-width: 1001px) {
+
+:root[data-theme="light"] body {
+    background:
+        
+        linear-gradient(
+            180deg,
+            #fddbb7 0%,
+            #fbd5ff 50%,
+            #ffffff 100%
+        );
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+    /* Dark mode */
+    :root[data-theme="dark"] body {
+        background: #0f0f11 !important;
+    }
+
+    body {
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+    }
+}
+
+
+/* Works. Don't touch. */
+
+/* ======================================================
+   MID WIDTH (900–1001px)
+   FIX HOME SECTION ORDER ONLY
+====================================================== */
+
+@media (min-width: 900px) and (max-width: 1001px) {
+
+  /* DO NOT TOUCH HEADER / FOOTER */
+  header,
+  footer {
+    order: initial !important;
+  }
+
+  /* Home content wrapper ONLY */
+  .home,
+  .home-content,
+  .home-layout {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  /* Explicit order inside home */
+  .profile,
+  .profile-box,
+  .home-profile {
+    order: 1;
+  }
+
+  /* REMOVE hybrid / glass divider */
+  .hybrid-divider,
+  .glass-line,
+  .glass-divider {
+    display: none !important;
+  }
+
+  /* Continue normal flow */
+  .featured,
+  .featured-slider {
+    order: 2;
+  }
+
+  .explore {
+    order: 3;
+  }
+}
