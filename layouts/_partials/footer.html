@@ -6,9 +6,11 @@
         </div>
 
         <nav class="footer-links" aria-label="Footer menu">
-            {{ range first 4 .Site.Menus.main }}
-                <a href="{{ .URL | relURL }}">{{ .Name }}</a>
+        {{ with .Site.Menus.main }}
+            {{ range first 4 . }}
+            <a href="{{ .URL | relURL }}">{{ .Name }}</a>
             {{ end }}
+        {{ end }}
         </nav>
 
         <div class="footer-social" aria-label="Footer icons">
