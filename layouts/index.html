@@ -2,111 +2,143 @@
 
 <div class="home-wrapper">
 
-    <!-- Divider -->
-    <div class="glass-line"></div>
+  <!-- Divider -->
+  <div class="glass-line"></div>
 
-    <div class="home-layout">
+  <div class="home-layout">
 
-        <!-- LEFT: PROFILE -->
-        <aside class="profile-column">
-            <div class="profile-card">
+    <!-- =========================
+         LEFT: PROFILE
+    ========================== -->
+    <aside class="profile-column">
+      <div class="profile-card">
 
-                <div class="profile-avatar-wrap">
-                    <img src="{{ .Site.Params.profile.avatar | relURL }}" class="profile-avatar">
-                </div>
+        {{ with .Site.Params.profile.avatar }}
+        <div class="profile-avatar-wrap">
+          <img
+            src="{{ . | relURL }}"
+            class="profile-avatar"
+            alt="{{ $.Site.Params.profile.name }}">
+        </div>
+        {{ end }}
 
-                <h1 class="profile-name">
-                    {{ .Site.Params.profile.name }}
-                </h1>
+        {{ with .Site.Params.profile.name }}
+        <h1 class="profile-name">
+          {{ . }}
+        </h1>
+        {{ end }}
 
-                <p class="profile-about">
-                    {{ .Site.Params.profile.about }}
-                </p>
+        {{ with .Site.Params.profile.about }}
+        <p class="profile-about">
+          {{ . }}
+        </p>
+        {{ end }}
 
-                <div class="profile-social-icons">
-                    {{ range .Site.Params.social }}
-                        <a href="{{ .url | relURL }}" target="_blank" class="social-link">
-                            {{ partial "svg.html" (dict "name" .icon) }}
-                        </a>
-                    {{ end }}
-                </div>
+        {{ with .Site.Params.social }}
+        <div class="profile-social-icons">
+          {{ range . }}
+          <a
+            href="{{ .url }}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-link">
+            {{ partial "svg.html" (dict "name" .icon) }}
+          </a>
+          {{ end }}
+        </div>
+        {{ end }}
 
-            </div>
-        </aside>
+      </div>
+    </aside>
 
-        <!-- MIDDLE DIVIDER -->
-        <div class="hybrid-divider"></div>
+    <!-- MIDDLE DIVIDER -->
+    <div class="hybrid-divider"></div>
 
-        <!-- RIGHT SIDE -->
-        <section class="explore-column">
+    <!-- =========================
+         RIGHT: EXPLORE + FEATURED
+    ========================== -->
+    <section class="explore-column">
 
-            <!-- ⭐ FEATURED SLIDER (BEFORE EXPLORE TITLE) ⭐ -->
-            {{ if .Site.Params.featured }}
-            <div class="featured-wrapper">
+      <!-- ⭐ FEATURED SLIDER -->
+      {{ with .Site.Params.featured }}
+      <div class="featured-wrapper">
 
-                <div class="featured-card-shell">
+        <div class="featured-card-shell">
 
-                    <!-- Arrows -->
-                    <button class="featured-nav prev" onclick="featuredPrev()">
-                        {{ partial "svg.html" (dict "name" "arrow-left") }}
-                    </button>
+          <!-- Navigation -->
+          <button class="featured-nav prev" onclick="featuredPrev()">
+            {{ partial "svg.html" (dict "name" "arrow-left") }}
+          </button>
 
-                    <button class="featured-nav next" onclick="featuredNext()">
-                        {{ partial "svg.html" (dict "name" "arrow-right") }}
-                    </button>
+          <button class="featured-nav next" onclick="featuredNext()">
+            {{ partial "svg.html" (dict "name" "arrow-right") }}
+          </button>
 
-                    {{ range $i, $item := .Site.Params.featured }}
-                    <a href="{{ $item.url | relURL }}"
-                       class="featured-slide{{ if eq $i 0 }} is-active{{ end }}">
-                        <div class="featured-image"
-                             style="background-image:url('{{ $item.image | relURL }}');"></div>
+          <!-- Slides -->
+          {{ range $i, $item := . }}
+          <a
+            href="{{ $item.url | relURL }}"
+            class="featured-slide{{ if eq $i 0 }} is-active{{ end }}">
 
-                        <div class="featured-text">
-                            <h3>{{ $item.title }}</h3>
-                            <p>{{ $item.description }}</p>
-                        </div>
-                    </a>
-                    {{ end }}
-
-                </div>
-
-                <div class="featured-dots">
-                    {{ range $i, $_ := .Site.Params.featured }}
-                        <button class="dot{{ if eq $i 0 }} active{{ end }}" data-index="{{ $i }}"></button>
-                    {{ end }}
-                </div>
-
-            </div>
-            {{ end }}
-            <!-- END SLIDER -->
-
-            <!-- EXPLORE HEADER -->
-            <header class="explore-header">
-                <h2 class="explore-title">{{ .Site.Params.explore_title.title }}</h2>
-                <p class="explore-subtitle">{{ .Site.Params.explore_title.subtitle }}</p>
-            </header>
-
-            <!-- EXPLORE GRID -->
-            <div class="explore-grid">
-                {{ range .Site.Params.explore }}
-                <a href="{{ .url | relURL }}" class="explore-card">
-                    <div class="card-category">{{ .category }}</div>
-                    <div class="card-title">{{ .icon }} {{ .title }}</div>
-                    <div class="card-desc">{{ .description }}</div>
-                </a>
-                {{ end }}
+            <div
+              class="featured-image"
+              style="background-image:url('{{ $item.image | relURL }}');">
             </div>
 
-        </section>
+            <div class="featured-text">
+              <h3>{{ $item.title }}</h3>
+              <p>{{ $item.description }}</p>
+            </div>
 
-    </div>
+          </a>
+          {{ end }}
+
+        </div>
+
+        <!-- Dots -->
+        <div class="featured-dots">
+          {{ range $i, $_ := . }}
+          <button
+            class="dot{{ if eq $i 0 }} active{{ end }}"
+            data-index="{{ $i }}">
+          </button>
+          {{ end }}
+        </div>
+
+      </div>
+      {{ end }}
+      <!-- END FEATURED SLIDER -->
+
+      <!-- EXPLORE HEADER -->
+      {{ with .Site.Params.explore_title }}
+      <header class="explore-header">
+        <h2 class="explore-title">{{ .title }}</h2>
+        <p class="explore-subtitle">{{ .subtitle }}</p>
+      </header>
+      {{ end }}
+
+      <!-- EXPLORE GRID -->
+      {{ with .Site.Params.explore }}
+      <div class="explore-grid">
+        {{ range . }}
+        <a href="{{ .url | relURL }}" class="explore-card">
+          <div class="card-category">{{ .category }}</div>
+          <div class="card-title">{{ .icon }} {{ .title }}</div>
+          <div class="card-desc">{{ .description }}</div>
+        </a>
+        {{ end }}
+      </div>
+      {{ end }}
+
+    </section>
+
+  </div>
 </div>
 
-
-<!-- =====================================
-     EXTERNAL FEATURED SLIDER JS
-====================================== -->
+<!-- =========================
+     FEATURED SLIDER SCRIPT
+========================== -->
 {{ $slider := resources.Get "js/featured-slider.js" | minify | fingerprint }}
-<script src="{{ $slider.RelPermalink }}"></script>
+<script src="{{ $slider.RelPermalink }}" defer></script>
 
 {{ end }}
