@@ -2,31 +2,9 @@
 <html lang="en" data-theme="light">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>
-        {{ block "title" . }}
-            {{ if .Title }}{{ .Title }} | {{ end }}{{ .Site.Title }}
-        {{ end }}
-    </title>
-
-    {{ hugo.Generator }}
-
-    <!-- Preconnect for better font performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <!-- EB Garamond Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- SCSS Pipeline (Hugo Pipes) -->
-    {{ $scss := resources.Get "scss/main.scss" | toCSS | minify | fingerprint }}
-    <link rel="stylesheet" href="{{ $scss.RelPermalink }}">
-
-    <!-- 🌐 Analytics -->
-    {{ partial "analytics.html" . }}
-
+  {{ block "head" . }}
+    {{ partial "head.html" . }}
+  {{ end }}
 </head>
 
 <body class="{{ if .IsHome }}home{{ else }}not-home{{ end }}">

@@ -1,0 +1,27 @@
+{{- $title := cond .IsHome .Site.Title .Title -}}
+{{- $desc := "" -}}
+
+{{- if .Params.description -}}
+  {{- $desc = .Params.description -}}
+{{- else if .Summary -}}
+  {{- $desc = .Summary | plainify -}}
+{{- else if .Site.Params.description -}}
+  {{- $desc = .Site.Params.description -}}
+{{- end -}}
+
+<meta property="og:site_name" content="{{ .Site.Title }}">
+<meta property="og:title" content="{{ $title }}">
+{{ with $desc }}
+<meta property="og:description" content="{{ . }}">
+{{ end }}
+<meta property="og:url" content="{{ .Permalink }}">
+
+{{ if .IsHome }}
+<meta property="og:type" content="website">
+{{ else }}
+<meta property="og:type" content="article">
+{{ end }}
+
+{{ with .Params.image }}
+<meta property="og:image" content="{{ . | absURL }}">
+{{ end }}

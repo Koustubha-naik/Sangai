@@ -1,0 +1,9 @@
+{{- if or .Draft (.Params.noindex) -}}
+<meta name="robots" content="noindex, nofollow">
+
+{{- else if and .IsNode (gt .Paginator.PageNumber 1) -}}
+<meta name="robots" content="noindex, follow">
+
+{{- else -}}
+<meta name="robots" content="index, follow">
+{{- end -}}

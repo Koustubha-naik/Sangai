@@ -1,0 +1,5 @@
+{{- if .Params.canonical -}}
+<link rel="canonical" href="{{ .Params.canonical }}">
+{{- else -}}
+<link rel="canonical" href="{{ .Permalink }}">
+{{- end -}}
