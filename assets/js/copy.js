@@ -1,6 +1,7 @@
 // copy.js
 // ======================================
 // Universal code-block copy button logic
+// Hardcore version: strips line numbers
 // ======================================
 
 document.addEventListener("click", (e) => {
@@ -13,27 +14,31 @@ document.addEventListener("click", (e) => {
     const code = wrapper.querySelector("pre code");
     if (!code) return;
 
-    const text = code.innerText;
+    // --------------------------------------
+    // HARDCORE COPY (remove line numbers)
+    // --------------------------------------
+    const text = code.innerText.replace(/^\s*\d+\s+/gm, "");
+
     const label = button.querySelector(".copy-text");
 
-    // ✅ Modern clipboard (HTTPS)
+    // ✅ Modern Clipboard API (HTTPS)
     if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(text).then(() => {
-            feedback();
-        }).catch(() => {
-            fallbackCopy(text);
-        });
+        navigator.clipboard.writeText(text)
+            .then(feedback)
+            .catch(() => fallbackCopy(text));
     } 
     // ✅ Fallback (HTTP / file://)
     else {
         fallbackCopy(text);
     }
 
-    function fallbackCopy(text) {
+    function fallbackCopy(content) {
         const textarea = document.createElement("textarea");
-        textarea.value = text;
+        textarea.value = content;
+        textarea.setAttribute("readonly", "");
         textarea.style.position = "fixed";
-        textarea.style.opacity = "0";
+        textarea.style.top = "-9999px";
+
         document.body.appendChild(textarea);
         textarea.select();
 
@@ -41,7 +46,7 @@ document.addEventListener("click", (e) => {
             document.execCommand("copy");
             feedback();
         } catch (err) {
-            console.error("Copy failed", err);
+            console.error("Copy failed:", err);
         }
 
         document.body.removeChild(textarea);
@@ -49,6 +54,7 @@ document.addEventListener("click", (e) => {
 
     function feedback() {
         if (!label) return;
+
         const original = label.textContent;
         label.textContent = "Copied!";
         button.classList.add("copied");
