@@ -9,6 +9,15 @@
 {{ partial "meta/og.html" . }}
 {{ partial "meta/twitter.html" . }}
 
+{{ if .IsHome }}
+  {{ partial "schema/website.html" . }}
+{{ end }}
+
+{{ if .IsPage }}
+  {{ partial "schema/article.html" . }}
+{{ end }}
+
+
 {{ hugo.Generator }}
 
 <!-- Preconnect for better font performance -->
