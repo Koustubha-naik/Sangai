@@ -17,19 +17,35 @@
   {{ partial "schema/article.html" . }}
 {{ end }}
 
-
 {{ hugo.Generator }}
 
-<!-- Preconnect for better font performance -->
+<!-- ===================== -->
+<!-- Favicon -->
+<!-- ===================== -->
+<link rel="icon" type="image/x-icon" href="{{ "icon/favicon.ico" | relURL }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ "icon/favicon-32x32.png" | relURL }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ "icon/favicon-16x16.png" | relURL }}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ "icon/apple-touch-icon.png" | relURL }}">
+<link rel="manifest" href="{{ "icon/site.webmanifest" | relURL }}">
+
+<!-- ===================== -->
+<!-- Fonts -->
+<!-- ===================== -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<!-- EB Garamond Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link
+  href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap"
+  rel="stylesheet"
+>
 
-<!-- SCSS Pipeline (Hugo Pipes) -->
+<!-- ===================== -->
+<!-- Styles -->
+<!-- ===================== -->
 {{ $scss := resources.Get "scss/main.scss" | toCSS | minify | fingerprint }}
 <link rel="stylesheet" href="{{ $scss.RelPermalink }}">
 
-<!-- 🌐 Analytics -->
+<!-- ===================== -->
+<!-- Analytics -->
+<!-- ===================== -->
 {{ partial "analytics.html" . }}
