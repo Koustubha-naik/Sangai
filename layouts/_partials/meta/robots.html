@@ -1,9 +1,16 @@
-{{- if or .Draft (.Params.noindex) -}}
-<meta name="robots" content="noindex, nofollow">
+{{- if .Params.robots -}}
+<meta name="robots" content="{{ .Params.robots }}">
+<meta name="googlebot" content="{{ .Params.robots }}">
 
-{{- else if and .IsNode (gt .Paginator.PageNumber 1) -}}
+{{- else if or .Draft (.Params.noindex) -}}
+<meta name="robots" content="noindex, nofollow">
+<meta name="googlebot" content="noindex, nofollow">
+
+{{- else if and .IsNode .Paginator (gt .Paginator.PageNumber 1) -}}
 <meta name="robots" content="noindex, follow">
+<meta name="googlebot" content="noindex, follow">
 
 {{- else -}}
 <meta name="robots" content="index, follow">
+<meta name="googlebot" content="index, follow">
 {{- end -}}

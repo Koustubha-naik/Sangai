@@ -1,5 +1,13 @@
+{{- $title := "" -}}
+
 {{- if .IsHome -}}
-  <title>{{ .Site.Title }}</title>
+  {{- $title = .Site.Title -}}
+{{- else if .Params.seo_title -}}
+  {{- $title = printf "%s | %s" .Params.seo_title .Site.Title -}}
+{{- else if .IsPage -}}
+  {{- $title = printf "%s | %s" .Title .Site.Title -}}
 {{- else -}}
-  <title>{{ .Title }} | {{ .Site.Title }}</title>
+  {{- $title = .Site.Title -}}
 {{- end -}}
+
+<title>{{ $title | htmlEscape | truncate 60 }}</title>

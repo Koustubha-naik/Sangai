@@ -1,13 +1,17 @@
 {{- $desc := "" -}}
 
-{{- if .Params.description -}}
-  {{- $desc = .Params.description -}}
-{{- else if .Summary -}}
-  {{- $desc = .Summary | plainify -}}
-{{- else if .Site.Params.description -}}
+{{- if .IsHome -}}
   {{- $desc = .Site.Params.description -}}
+
+{{- else if .IsPage -}}
+  {{- if .Description -}}
+    {{- $desc = .Description -}}
+  {{- else if .Summary -}}
+    {{- $desc = .Summary | plainify | truncate 160 -}}
+  {{- end -}}
+
 {{- end -}}
 
 {{- with $desc -}}
-<meta name="description" content="{{ . }}">
+<meta name="description" content="{{ . | htmlEscape }}">
 {{- end -}}

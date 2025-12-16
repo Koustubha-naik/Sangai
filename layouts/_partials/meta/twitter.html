@@ -3,19 +3,34 @@
 {{- $title := cond .IsHome .Site.Title .Title -}}
 {{- $desc := "" -}}
 
-{{- if .Params.description -}}
-  {{- $desc = .Params.description -}}
+{{- if .Description -}}
+  {{- $desc = .Description -}}
 {{- else if .Summary -}}
-  {{- $desc = .Summary | plainify -}}
+  {{- $desc = .Summary | plainify | truncate 200 -}}
 {{- else if .Site.Params.description -}}
   {{- $desc = .Site.Params.description -}}
 {{- end -}}
 
-<meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:title" content="{{ $title | htmlEscape }}">
 {{ with $desc }}
-<meta name="twitter:description" content="{{ . }}">
+<meta name="twitter:description" content="{{ . | htmlEscape }}">
 {{ end }}
 
-{{ with .Params.image }}
-<meta name="twitter:image" content="{{ . | absURL }}">
+{{- $twImage := "" -}}
+{{- if .Params.image -}}
+  {{- $twImage = .Params.image | absURL -}}
+{{- else if .Site.Params.twitter_image -}}
+  {{- $twImage = .Site.Params.twitter_image | absURL -}}
+{{- end -}}
+
+{{ with $twImage }}
+<meta name="twitter:image" content="{{ . }}">
+{{ end }}
+
+{{ with .Site.Params.twitter_site }}
+<meta name="twitter:site" content="{{ . }}">
+{{ end }}
+
+{{ with .Site.Params.twitter_creator }}
+<meta name="twitter:creator" content="{{ . }}">
 {{ end }}
