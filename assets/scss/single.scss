@@ -87,17 +87,11 @@
 }
 
 .single-content img {
-  max-width: 100%;
-  border-radius: 10px;
-  margin: 20px 0;
   display: block;
-}
-
-.single-content img {
-    display: block;
-    margin: 20px auto;
-    max-width: 100%;
-    height: auto;
+  margin: 20px auto;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
 }
 
 .single-content video,
@@ -129,7 +123,7 @@
 ======================================= */
 
 pre {
-  background: #1e1e1e !important;
+  background: #1e1e1e;
   border-radius: 8px;
   padding: 1rem 1.2rem;
   overflow-x: auto;
@@ -387,7 +381,7 @@ code {
 ============================================ */
 
 .fixed-header {
-    position: fixed !important;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;

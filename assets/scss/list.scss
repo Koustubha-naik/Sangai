@@ -167,7 +167,7 @@
 /* Active page (filled circle) */
 .page-number.active {
     background: var(--section-title);
-    color: white !important;
+    color: white;
     border-color: var(--section-title);
     font-weight: bold;
 }
@@ -185,5 +185,5 @@
 [data-theme="dark"] .page-number.active {
     background: var(--accent, #4c8fff);
     border-color: var(--accent, #4c8fff);
-    color: #fff !important;
+    color: #fff;
 }
