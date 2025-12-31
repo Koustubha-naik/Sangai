@@ -31,5 +31,8 @@
     {{ $single := resources.Get "js/single.js" | minify | fingerprint }}
     <script src="{{ $single.RelPermalink }}" defer></script>
 
+    {{ $timeago := resources.Get "js/timeago.js" | minify | fingerprint }}
+    <script src="{{ $timeago.RelPermalink }}" defer></script>
+
 </body>
 </html>
