@@ -1,0 +1,20 @@
+{{- $src := .Destination | safeURL -}}
+{{- $alt := .Text | default "" -}}
+{{- $title := .Title | default "" -}}
+
+{{- $img := resources.Get .Destination -}}
+{{- $isSquare := false -}}
+{{- if $img }}
+  {{- if eq $img.Width $img.Height }}
+    {{- $isSquare = true -}}
+  {{- end }}
+{{- end }}
+
+<figure class="md-image {{ if $isSquare }}is-square{{ end }} {{ if $title }}size-{{ $title }}{{ end }}" data-zoom>
+  <img
+    src="{{ $src }}"
+    alt="{{ $alt }}"
+    loading="lazy"
+    decoding="async"
+  />
+</figure>

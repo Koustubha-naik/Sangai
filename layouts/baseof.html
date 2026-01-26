@@ -17,6 +17,12 @@
         {{ block "main" . }}{{ end }}
     </main>
 
+    <!-- IMAGE LIGHTBOX -->
+    <div class="lightbox" hidden>
+      <button class="lb-close" aria-label="Close">×</button>
+      <img class="lb-image" alt="">
+    </div>
+
     <!-- FOOTER -->
     {{ partial "footer.html" . }}
 
