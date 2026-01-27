@@ -40,6 +40,16 @@
 >
 
 <!-- ===================== -->
+<!-- Theme Variables -->
+<!-- ===================== -->
+<style>
+  :root {
+    --bg-dark: {{ .Site.Params.theme.bgDark | default "#0f0f11" }};
+    --bg-light: {{ .Site.Params.theme.bgLight | default "#ffffff" }};
+  }
+</style>
+
+<!-- ===================== -->
 <!-- Styles -->
 <!-- ===================== -->
 {{ $scss := resources.Get "scss/main.scss" | toCSS | minify | fingerprint }}

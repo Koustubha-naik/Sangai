@@ -39,11 +39,11 @@ body {
 ====================================================== */
 
 body {
-  background-color: #0f0f11; /* dark theme default */
+  background-color: var(--bg-dark);
 }
 
 :root[data-theme="light"] body {
-  background-color: #c9d0ae; /* light theme */
+  background-color: var(--bg-light);
 }
 
 /* ======================================================
