@@ -5,7 +5,7 @@
 <!-- =======================================
      FEATURED HERO WITH BLUR
 ======================================= -->
-{{ with .Params.image }}
+{{ with .Params.featuredimage }}
 <div class="hero-box">
     <div class="hero-blur" style="background-image: url('{{ . | relURL }}');"></div>
     <img class="hero-main" src="{{ . | relURL }}" alt="{{ $.Title }}">

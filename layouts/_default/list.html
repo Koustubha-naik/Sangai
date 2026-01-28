@@ -9,7 +9,7 @@
     {{ range $paginator.Pages }}
     <a href="{{ .RelPermalink }}" class="list-row">
 
-        {{ with .Params.image }}
+        {{ with .Params.featuredimage }}
         <div class="list-thumb">
             <img src="{{ . | relURL }}" alt="{{ $.Title }}">
         </div>

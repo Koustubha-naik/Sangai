@@ -1,0 +1,293 @@
+# =========================================================
+# HUGO SITE CONFIGURATION FILE
+# =========================================================
+# Theme Name : Sangai
+# File       : exampleSite/hugo.toml
+#
+# This file controls:
+# - Site identity (title, URL, language)
+# - Theme behavior and appearance
+# - Homepage sections (profile, cards, slider)
+# - Navigation menus
+# - Markdown rendering
+#
+# This file is SAFE TO EDIT.
+# Comments do NOT affect Hugo builds.
+# =========================================================
+
+
+# ---------------------------------------------------------
+# BASIC SITE SETTINGS (REQUIRED)
+# ---------------------------------------------------------
+
+# Base URL of your website
+# ---------------------------------------------
+# Development:
+#   http://localhost:1313
+# Production:
+#   https://yourdomain.com/
+#
+# IMPORTANT:
+# - Always include trailing slash in production
+baseURL = "http://localhost:1313"
+
+# Language of the site
+# Used for SEO and accessibility
+languageCode = "en-us"
+
+# Website title
+# Appears in browser tab, RSS, metadata
+title = "Sangai"
+
+# Theme folder name (inside /themes)
+theme = "Sangai"
+
+# Generate robots.txt automatically
+# Helps search engines crawl your site
+enableRobotsTXT = true
+
+
+# ---------------------------------------------------------
+# PAGINATION
+# ---------------------------------------------------------
+# Controls how many posts appear per list page
+
+[pagination]
+  # Number of items per page
+  pagerSize = 3
+
+
+# ---------------------------------------------------------
+# SITE PARAMETERS (THEME CONFIGURATION)
+# ---------------------------------------------------------
+# Everything inside [params] is theme-specific
+# Accessed in templates using:
+#   .Site.Params
+
+[params]
+
+  # -----------------------------------------------------------------------------
+  # SEO & SOCIAL METADATA
+  # This description appears in search engine results (Google) and 
+  # social media previews (Open Graph / Twitter Cards).
+  # -----------------------------------------------------------------------------
+  description = "Sangai is a clean, minimal Hugo theme for personal writing and visual storytelling."
+
+  # -------------------------------------------------------
+  # GOOGLE ANALYTICS (OPTIONAL)
+  # -------------------------------------------------------
+  # Uncomment and replace to enable analytics
+
+  # googleAnalytics = "G-XXXXXXXXXX"
+
+  # -------------------------------------------------------
+  # THEME COLORS
+  # -------------------------------------------------------
+  # Used globally for UI and backgrounds
+
+  [params.theme]
+
+    # Background color for dark mode
+    bgDark = "#121216"
+
+    # Background color for light mode
+    bgLight = "#e1ddb7"
+
+  # -------------------------------------------------------
+  # PROFILE / HERO SECTION
+  # -------------------------------------------------------
+  
+  [params.profile]
+
+    # Avatar image
+    # Must exist inside /static/img/ or /static/images 
+
+    avatar = "img/dad.webp"
+
+    # Display name 
+
+    name = "Sangai Deer 🚬"
+
+    # About text
+    # -----------------------------------------
+    # - Supports Markdown
+    # - Supports multi-line text
+    # - Triple quotes are REQUIRED
+
+    about = """
+Welcome.
+
+I’m the last Sangai —
+moving quietly through the noise.
+
+Stay curious.
+Or blink.
+"""
+
+
+  
+# ---------------------------------------------------------
+# SOCIAL LINKS
+# ---------------------------------------------------------
+# Used in header/footer social icons
+#
+# icon must match theme support
+# Common values:
+# - github
+# - linkedin
+# - x
+# - instagram
+
+
+[[params.social]]
+  icon = "github"
+  url = "#"
+
+[[params.social]]
+  icon = "linkedin"
+  url = "#"
+
+[[params.social]]
+  icon = "x"
+  url = "#"
+
+[[params.social]]
+  icon = "instagram"
+  url = "#"
+
+# ---------------------------------------------------------
+# FEATURED SLIDER / CAROUSEL
+# ---------------------------------------------------------
+# Displayed visually on the homepage
+
+[[params.featured]]
+  title = "Morning Mist of Loktak"
+  description = "A calm sunrise drifting across Loktak’s floating islands."
+  image = "img/morning.webp"
+  url = "blog/morning-mist/"
+
+[[params.featured]]
+  title = "The Floating Phumdis"
+  description = "The unique floating ecosystem that shelters the Sangai."
+  image = "img/local.webp"
+  url = "blog/phumdis/"
+
+[[params.featured]]
+  title = "About Me"
+  description = "A quieter look behind the work."
+  image = "img/sketch.webp"
+  url = "about/"
+
+
+  # -------------------------------------------------------
+  # EXPLORE SECTION TITLE
+  # -------------------------------------------------------
+  # Heading above homepage cards
+
+  [params.explore_title]
+
+    # Section title
+    title = "Explore"
+
+    # Section subtitle
+    subtitle = "Wander through thoughts, pages, and quiet chaos."
+
+
+# ---------------------------------------------------------
+# EXPLORE CARDS (HOMEPAGE NAVIGATION)
+# ---------------------------------------------------------
+# Each [[params.explore]] block = one card
+#
+# RULES:
+# - Order matters (top to bottom)
+# - You can add unlimited cards
+# - Emojis are allowed
+# - URL is relative to site root
+
+[[params.explore]]
+  title = "Blog"
+  icon = "✍️"
+  category = "Writing"
+  description = "Thoughts, notes, and long-form experiments."
+  url = "blog/"
+
+[[params.explore]]
+  title = "About"
+  icon = "🦌"
+  category = "Identity"
+  description = "Who I am, what I build, and why."
+  url = "about/"
+
+[[params.explore]]
+  title = "404"
+  icon = "⚠"
+  category = "Chaos"
+  description = "A page that shouldn’t exist — but does."
+  url = "xyz/"
+
+
+# ---------------------------------------------------------
+# MARKDOWN RENDERING
+# ---------------------------------------------------------
+# Controls how Markdown is converted to HTML .. Nothing to change here 
+
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
+
+  # Code block highlighting
+  [markup.highlight]
+
+    # Show line numbers
+    lineNos = true
+
+    # Use inline numbers instead of tables
+    lineNumbersInTable = false
+
+
+# ---------------------------------------------------------
+# MAIN MENU (TOP NAVIGATION)
+# ---------------------------------------------------------
+# weight:
+# - Lower number = earlier position
+
+[menu]
+
+  [[menu.main]]
+    name = "Home"
+    url = ""
+    weight = 1
+
+  [[menu.main]]
+    name = "Blog"
+    url = "blog/"
+    weight = 2
+
+  [[menu.main]]
+    name = "About"
+    url = "about/"
+    weight = 3
+
+  [[menu.main]]
+    name = "404"
+    url = "xyz/"
+    weight = 4
+
+
+# ---------------------------------------------------------
+# OUTPUT FORMATS
+# ---------------------------------------------------------
+# Defines what Hugo generates
+
+[outputs]
+  home = ["HTML", "RSS"]
+
+# ---------------------------------------------------------
+# SITEMAP
+# ---------------------------------------------------------
+# Helps search engines index your site
+
+[sitemap]
+  changefreq = "monthly"
+  priority = 0.5
+  filename = "sitemap.xml"
