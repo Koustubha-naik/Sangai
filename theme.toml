@@ -1,6 +1,6 @@
 name = "Sangai"
 license = "MIT"
-licenselink = "https://opensource.org/licenses/MIT"
+licenselink = "https://github.com/Koustubha-naik/Sangai/blob/main/LICENSE"
 description = "A clean, modern, and responsive Hugo theme inspired by the Sangai deer — built for blogs, portfolios, and storytelling."
 
 homepage = "https://github.com/Koustubha-naik/Sangai"
@@ -36,8 +36,8 @@ features = [
   "Social icons support"
 ]
 
-min_version = "0.125.0"
+min_version = "0.120.0"
 
 [author]
   name = "Koustubha Naik"
-  homepage = "https://github.com/Koustubha-naik/Sangai"
+  homepage = "https://github.com/Koustubha-naik"

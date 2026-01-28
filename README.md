@@ -5,7 +5,7 @@
 
 Sangai is a clean, modern Hugo theme focused on readable content for blogs, portfolios, and notes.
 
-![Sangai Hugo Theme Screenshot](images/screenshot.png)
+![Sangai Hugo Theme Screenshot](https://raw.githubusercontent.com/Koustubha-naik/Sangai/main/images/screenshot.png)
 
 ---
 
@@ -36,19 +36,19 @@ Sangai is a clean, modern Hugo theme focused on readable content for blogs, port
 ### Using Git submodule (recommended)
 
 ```bash
-git submodule add https://github.com/Koustubha-naik/Sangai themes/Sangai
+git submodule add https://github.com/Koustubha-naik/Sangai themes/sangai
 ````
 
 ### Or clone directly
 
 ```bash
-git clone https://github.com/Koustubha-naik/Sangai themes/Sangai
+git clone https://github.com/Koustubha-naik/Sangai themes/sangai
 ```
 
 Then enable the theme in your Hugo configuration:
 
 ```toml
-theme = "Sangai"
+theme = "sangai"
 ```
 
 ---
@@ -75,7 +75,7 @@ No additional configuration is required.
 
 ## Requirements
 
-* **Hugo extended** v0.125.0 or later
+* **Hugo extended** v0.120.0 or later
 
 ---
 ## License
